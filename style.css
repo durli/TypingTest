@@ -1,0 +1,224 @@
+:root {
+  --yellow: rgb(255, 187, 0);
+  --lightgray: rgb(223, 223, 223);
+  --darkgray: rgb(119, 119, 119);
+  --incorrect: rgb(231, 47, 47);
+  --icon-size: 1.4rem;
+  --logo-size: 3rem;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+span {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--darkgray);
+}
+
+.icon:hover i {
+  color: var(--lightgray);
+}
+
+.icon:hover span {
+  color: var(--lightgray);
+}
+button {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.dark-bg {
+  background-color: rgb(54 54 54);
+}
+
+#logo > i {
+  font-size: var(--logo-size);
+  color: var(--yellow);
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 2px solid brown;
+  padding: 5px;
+}
+
+.box1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid red;
+  padding: 5px;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+}
+
+#title {
+  margin: 10px;
+  font-size: 2.5rem;
+}
+
+#title a {
+  color: var(--lightgray);
+}
+
+.icon-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.icon {
+  margin: 10px 20px;
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+.icon > a {
+  display: flex;
+  align-items: center;
+}
+
+.icon i {
+  font-size: var(--icon-size);
+  color: var(--darkgray);
+}
+
+.icon span {
+  margin: 5px;
+}
+
+#typing-mode {
+  border: 2px solid orange;
+  font-size: 1.2rem;
+  color: var(--darkgray);
+}
+
+#category > div,
+.difficulty > div {
+  cursor: pointer;
+}
+.selected {
+  color: var(--yellow);
+}
+
+#category {
+  display: flex;
+}
+
+#category > div {
+  margin: 10px;
+  /* padding: 10px; */
+}
+
+.difficulty {
+  display: flex;
+}
+
+.difficulty > div {
+  margin: 10px;
+  /* padding: 10px; */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin-top: 30px;
+}
+
+.btn {
+  height: 60px;
+  /* width: 120px; */
+  font-size: 1.5rem;
+  border: none;
+  background-color: transparent;
+  border-radius: 7px;
+  min-width: 100px;
+  color: var(--darkgray);
+  /* transition: all 0.15s; */
+}
+
+.btn:hover {
+  /* background-color: var(--lightgray); */
+  color: var(--lightgray);
+}
+
+.btn > a {
+  margin: 10px;
+}
+.btn > span {
+  margin: 10px;
+}
+
+/* Timer should be displayed only when user has started typing*/
+#timer {
+  display: none;
+  font-size: 2rem;
+  color: var(--yellow);
+}
+
+#typing-area {
+  font-size: 0; /*This is done to make the default space between two consecutive spans zero.*/
+  padding: 20px;
+  color: var(--darkgray);
+  font-family: "Roboto Mono", monospace;
+  /* margin: 60px 0px; */
+  padding: 40px;
+  width: 100%;
+}
+
+#typing-area span {
+  font-size: 2rem;
+}
+
+.typed-correctly {
+  color: var(--lightgray);
+}
+
+.typed-incorrectly {
+  color: var(--incorrect);
+}
+
+/* .not-typed::before { */
+.blinker {
+  content: "";
+  border: 1px solid var(--yellow);
+  animation: blink 1.2s linear infinite;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  /* display: none; */
+}
+
+footer {
+  margin-top: 8%;
+  padding: 10px;
+}
+
+@keyframes blink {
+  25% {
+    border: 1px solid transparent;
+  }
+  75% {
+    border: 1px solid transparent;
+  }
+}
