@@ -48,23 +48,32 @@ function handleBackspace(e) {
 
   if (keynum != 8) return;
 
+  let typingArea = document.querySelector("typing-area");
+  let active = document.querySelectorAll(".not-typed")[0];
+  let prev = active.previousElementSibling.previousElementSibling;
+  console.log("classList = ", prev.classList);
+  prev.classList.remove("typed-correctly");
+  prev.classList.remove("typed-incorrectly");
+  prev.classList.add("not-typed");
+
   if (blinkerPos > 0) {
     blinkerPos--;
     updateBlinker();
+  } else {
+    return;
   }
+  //   let prevTxt = prev.textContent;
+  //   typingArea.removeChild(prev);
 
-  let active = document.querySelector(".not-typed");
-  let prev = active.previousElementSibling;
-  let prevTxt = prev.textContent;
-  let lastChar = prevTxt[prevTxt.length - 1];
-  console.log("last char = ", lastChar);
-  //   if(prevTxt.length)
-  prevTxt = prevTxt.slice(0, prevTxt.length - 1);
-  //   prevTxt.pop();
-  prev.textContent = prevTxt;
+  //   let lastChar = prevTxt[prevTxt.length - 1];
+  //   console.log("last char = ", lastChar);
+  //   //   if(prevTxt.length)
+  //   prevTxt = prevTxt.slice(0, prevTxt.length - 1);
+  //   //   prevTxt.pop();
+  //   prev.textContent = prevTxt;
 
-  let txt = lastChar + active.textContent;
-  active.textContent = txt;
+  //   let txt = lastChar + active.textContent;
+  //   active.textContent = txt;
 }
 
 function keyPress(e) {
