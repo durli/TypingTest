@@ -2,6 +2,7 @@ let sampleText =
   "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error perferendis doloremque nesciunt voluptas, a eveniet sint enim reprehenderit, omnis impedit quo! Ullam repudiandae odio non voluptas.";
 
 var timeInput, time, timerStarted, timer, blinkerPos;
+var category, difficulty;
 
 function isCorrect(inp) {
   let txt = document.querySelector(".not-typed").textContent;
@@ -34,14 +35,25 @@ function addText(text) {
   }
 }
 
-function restartTyping(timeLimit, txt, lang) {
+function restartTyping(category, difficulty, txt, lang) {
   //(time, text, lang)
   console.log("Typing restarted....");
-  timeInput = timeLimit;
+  timeInput = difficulty;
   time = timeInput;
   timerStarted = false;
+
   blinkerPos = 0;
   sampleText = txt;
+
+  document.querySelector(".difficulty .selected").classList.remove("selected");
+  document
+    .querySelector(`.difficulty div[data-val="${difficulty}"]`)
+    .classList.add("selected");
+
+  document.querySelector("#category .selected").classList.remove("selected");
+  document
+    .querySelector(`#category>div[data-type="${category}"]`)
+    .classList.add("selected");
 
   document.getElementById("timer").style.display = "none";
   stopTimer(timer);
@@ -54,6 +66,17 @@ function restartTyping(timeLimit, txt, lang) {
   addText(txt);
 }
 
+function fetchDifficulty(element) {
+  return parseInt(element.textContent);
+}
+
+function setTimer(e) {
+  let timeLimit = fetchDifficulty(e.target);
+  document.querySelector(".difficulty .selected").classList.remove("selected");
+  e.target.classList.add("selected");
+  restartTyping("time", timeLimit, sampleText, "English");
+}
+
 function calcWPM() {
   let typedCorrect = document.querySelectorAll(".typed-correctly").length;
   let typedIncorrect = document.querySelectorAll(".typed-incorrectly").length;
@@ -61,7 +84,7 @@ function calcWPM() {
   let netWPM = ((totalTyped / 5 - typedIncorrect) * 60) / timeInput;
   if (netWPM < 0) netWPM = 0; //We don't want the net typing speed to be negative
 
-  return netWPM;
+  return netWPM.toFixed(2);
 }
 
 function showWPM() {
@@ -196,14 +219,16 @@ function keyPress(e) {
 }
 
 addText(sampleText);
-restartTyping(60, sampleText, "English");
+restartTyping("time", 60, sampleText, "English");
 
 document.querySelector("body").addEventListener("keypress", keyPress);
 document.querySelector("body").addEventListener("keydown", handleBackspace); // In case backspace is pressed
 document.getElementById("restart-button").addEventListener("mousedown", () => {
   console.log("restart button clicked...");
-  restartTyping(60, sampleText, "English");
+  restartTyping("time", 60, sampleText, "English");
 });
+
+document.querySelector(".difficulty").addEventListener("click", setTimer);
 // document.querySelector("body").addEventListener("load", () => {
 //   console.log("Site loaded...");
 //   restartTyping(60, sampleText, "English");
