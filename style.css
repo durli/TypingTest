@@ -148,6 +148,10 @@ main {
 }
 
 .btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   height: 60px;
   /* width: 120px; */
   font-size: 1.5rem;
@@ -162,6 +166,11 @@ main {
 .btn:hover {
   /* background-color: var(--lightgray); */
   color: var(--lightgray);
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .btn > a {
@@ -207,6 +216,10 @@ main {
   animation: blink 1.2s linear infinite;
   /* animation: name duration timing-function delay iteration-count direction fill-mode; */
   /* display: none; */
+}
+
+.disabled {
+  pointer-events: none;
 }
 
 footer {
