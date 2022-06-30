@@ -1,5 +1,7 @@
-let sampleText =
-  "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error perferendis doloremque nesciunt voluptas, a eveniet sint enim reprehenderit, omnis impedit quo! Ullam repudiandae odio non voluptas.";
+let sampleText = `Technology refers to the practical application of scientific knowledge for a purpose. It also includes the capability and skills required to apply the knowledge.
+Technology enhances the usefulness of goods and services in a safe manner. It aims at creating value. Technology can be both material and non-material (virtual). Technology includes instruments, tools, machines, and other devices that benefit human life.
+It may include simple items such as clothing, zip, housing, and complex items such as airplanes, robots, etc. Even the discovery of fire during stone age, and the process of producing light, heat, and cooking food are the examples of technology.
+The non-material (virtual) tools and machines such as computer software, internet, etc. are also considered technology.`;
 
 var timeInput, time, timerStarted, timer, blinkerPos;
 var category, difficulty;
